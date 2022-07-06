@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="view_partner_form_inherit_razonsocial">
+        <field name="name">partner.form.razonsocial</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+        	<field name="category_id" position="after">
+                <field name="legal_entity_name"
+                       placeholder="Razón Social"
+                       class="oe_edit_only" attrs="{'invisible': [('company_type', '=', 'person')],'required': [('company_type', '=', 'company')]}"></field>
+                <field name="firstname"
+                       placeholder="Primer Nombre"
+                       style="width: 50%%"
+                       class="oe_edit_only"
+                       attrs="{'invisible': [('company_type', '=', 'company')],'required': [('company_type', '=', 'person')]}"></field>
+                <field name="middlename"
+                       placeholder="Segundo Nombre"
+                       style="width: 49%%"
+                       class="oe_edit_only"
+                       attrs="{'invisible': [('company_type', '=', 'company')]}"></field>
+                <field name="first_lastname"
+                       placeholder="Primer Apellido"
+                       style="width: 50%%"
+                       class="oe_edit_only"
+                       attrs="{'invisible': [('company_type', '=', 'company')],'required': [('company_type', '=', 'person')]}"></field>
+                <field name="second_lastname"
+                       placeholder="Segundo Apellido"
+                       style="width: 49%%"
+                       class="oe_edit_only"
+                       attrs="{'invisible': [('company_type', '=', 'company')]}"></field>
+            </field>
+        </field>
+    </record>
+
+    </data>
+</openerp>
