@@ -51,7 +51,7 @@ class ResPartnerRazonsocial(models.Model):
                 partner.name = 'Unknown'
 
     name = fields.Char(
-        string=u'Nombre',readonly=True, default=" "
+        string=u'Nombre', default=" "
     )
     
     legal_entity_name = fields.Char(
