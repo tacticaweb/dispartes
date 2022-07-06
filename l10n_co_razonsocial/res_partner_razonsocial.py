@@ -38,7 +38,7 @@ class ResPartnerRazonsocial(models.Model):
             title = partner.title.shortcut and ' ' + partner.title.shortcut or ''
             if partner.company_type == 'company':
                 name = partner.legal_entity_name and partner.legal_entity_name or ''
-                partner.legal_denomination = name + title
+                partner.name = name + title
             elif partner.company_type == 'person':
                 s1 = partner.firstname and partner.firstname + ' ' or ''
                 s2 = partner.middlename and partner.middlename + ' ' or ''
