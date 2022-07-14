@@ -34,21 +34,22 @@ class ResPartnerRazonsocial(models.Model):
         'second_lastname'
     )
     def _copy_values(self):
-        for partner in self:
-            title = partner.title.shortcut and ' ' + partner.title.shortcut or ''
-            if partner.company_type == 'company':
-                name = partner.legal_entity_name and partner.legal_entity_name or ''
-                partner.name = name + title
-            elif partner.company_type == 'person':
-                s1 = partner.firstname and partner.firstname + ' ' or ''
-                s2 = partner.middlename and partner.middlename + ' ' or ''
-                s3 = partner.first_lastname and partner.first_lastname + ' ' or ''
-                s4 = partner.second_lastname and partner.second_lastname or ''
-                partner.legal_denomination = s1 + s2 + s3 + s4 + title
-                partner.name = s1 + s2 + s3 + s4 + title
-            else:
-                partner.legal_denomination = ''
-                partner.name = 'Unknown'
+        for rec in self:
+            if rec.firstname:
+                title = rec.title.shortcut and ' ' + rec.title.shortcut or ''
+                if rec.company_type == 'company':
+                    name = rec.legal_entity_name and rec.legal_entity_name or ''
+                    rec.name = name + title
+                elif rec.company_type == 'person':
+                    s1 = rec.firstname and rec.firstname + ' ' or ''
+                    s2 = rec.middlename and rec.middlename + ' ' or ''
+                    s3 = rec.first_lastname and rec.first_lastname + ' ' or ''
+                    s4 = rec.second_lastname and rec.second_lastname or ''
+                    rec.legal_denomination = s1 + s2 + s3 + s4 + title
+                    rec.name = s1 + s2 + s3 + s4 + title
+                else:
+                    rec.legal_denomination = ''
+                    rec.name = 'Unknown'
 
     name = fields.Char(
         string=u'Nombre', default=" "
